@@ -14,5 +14,5 @@ $\int_{a}^{b}f(x)dx = \sum_{i=1}^{n}{\frac{1}{2}h[f(x_i)+f(x_{i-1}))]} = h \cdot
 \
 \
 Compile using make normal or make parallel to compare time results. \
-Run using mpirun -n <# of processes> ./integral \
+Run using mpirun -n <# of processes> ./integral 
  
