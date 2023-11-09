@@ -40,6 +40,9 @@ int main(int argc, char* argv[]) {
         printf("[INFO] My rank is: %d, number arrived are: %f %f %lu\n",my_rank,a,b,n);
     }
 
+    h = (b - a) / n;
+
+
     // Start local computation
     float local_a, local_b, local_int;
     unsigned long int local_n;
@@ -51,7 +54,6 @@ int main(int argc, char* argv[]) {
     {
         local_n = n / p + 1;
         local_a = a + my_rank * local_n * h;
-        printf("[DEBUG] My rank is: %d, local values computed are: %f %f %lu\n",my_rank,local_a,local_b,local_n);
     }
     else
     {
@@ -62,24 +64,24 @@ int main(int argc, char* argv[]) {
     }
     local_b = local_a + local_n * h;
 
-    h = (b - a) / n;
-    printf("[INFO] My rank is: %d, local values computed are: %f %f %lu\n",my_rank,local_a,local_b,local_n);
+    printf("[INFO] My rank is: %d, local values computed are: %f %f %lu %Lf\n",my_rank,local_a,local_b,local_n,h);
 
+    local_int = ( ( f(local_b) + f(local_a) ) * h * local_n ) / 2.; // Trapezoidal area
 
-
-    // compute_local_integral(local_a,local_b,local_n,h);
+    // Do the actual local computation
     float temp;
     tag = 1;
     if (my_rank == 0)
     {
         integral = local_int;
+        printf("[INFO] My rank is: %d, local integral is: %Lf\n",my_rank,integral);
         for (i = 1; i < p; i++)
         {
             MPI_Recv(&temp, 1, MPI_FLOAT, i, tag, MPI_COMM_WORLD, &status);
             integral = integral + temp;
+            printf("[INFO] My rank is: %d, value received are: %f\n",my_rank,temp);
         }
-        printf("With n=%lu trapezoids we estimate integral", n);
-        printf(" from %f to %f: %Lf\n", a, b, integral);
+        printf("[FINAL] With n=%lu trapezoids we estimate integral from %f to %f: %Lf\n", n,a,b,integral);
     }
     else
     {
