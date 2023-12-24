@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -rdynamic CMakeFiles/coalescing.dir/coalescing_generated_02-coalescing.cu.o -o coalescing  /opt/cuda/12.3.0/lib64/libcudart_static.a -ldl -Wl,-Bstatic -lrt -Wl,-Bdynamic 

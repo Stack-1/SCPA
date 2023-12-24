@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -rdynamic CMakeFiles/matrix_vector_1thread.dir/matrix_vector_1thread_generated_01-matrix_vector_1thread.cu.o -o matrix_vector_1thread  /opt/cuda/12.3.0/lib64/libcudart_static.a -ldl -Wl,-Bstatic -lrt -Wl,-Bdynamic 

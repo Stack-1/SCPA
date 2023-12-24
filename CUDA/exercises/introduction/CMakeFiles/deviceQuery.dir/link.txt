@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -rdynamic CMakeFiles/deviceQuery.dir/00-deviceQuery.cpp.o -o deviceQuery  /opt/cuda/12.3.0/lib64/libcudart_static.a -ldl -Wl,-Bstatic -lrt -Wl,-Bdynamic 

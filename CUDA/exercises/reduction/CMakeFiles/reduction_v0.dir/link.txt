@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -rdynamic CMakeFiles/reduction_v0.dir/reduction_v0_generated_reduction_v0.cu.o -o reduction_v0  /opt/cuda/12.3.0/lib64/libcudart_static.a -ldl -Wl,-Bstatic -lrt -Wl,-Bdynamic 
